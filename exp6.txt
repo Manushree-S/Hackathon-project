@@ -1,0 +1,69 @@
+cd 
+
+# Create and enter the project folder
+mkdir Exp6
+cd Exp6
+
+# Initialize a new Git repository
+git init
+
+# Create a text file with content
+echo "Main project" > project.txt
+
+# Verify the file content
+cat project.txt
+
+# Stage and commit the file
+git add .
+git commit -m "Initial commit"
+
+# Link to the remote GitHub repository
+git remote add origin https://github.com/Manushree-S/Exp6.git
+
+# Verify the remote link
+git remote -v
+
+# Check current branch
+git branch
+
+# Push the local master branch to GitHub
+git push -u origin master
+
+# Create and switch to a new feature branch
+git checkout -b feature-login
+
+# 1. Add text to the project file
+echo "login module added" >> project.txt
+
+# 2. View the contents of the file
+cat project.txt
+
+# 3. Stage the changes for commit
+git add .
+
+# 4. Commit the changes to the local branch
+git commit -m "Added Login Feature"
+
+# 5. Push the new branch to GitHub
+git push -u origin feature-login
+
+# 6. Fetch updates from the remote repository
+git fetch origin
+
+# 7. Merge remote master into the local feature branch
+git merge origin/master
+
+# 8. Switch over to the local master branch
+git checkout master
+
+# 9. Merge the feature branch into the master branch
+git merge feature-login
+
+# 10. View the final merged file contents
+cat project.txt
+
+cat project.txt
+
+git branch -d feature-login
+
+git branch

@@ -1,0 +1,33 @@
+cd ~
+
+mkdir Exp10
+cd Exp10
+
+git init
+
+git config user.name "JohnDoe"
+git config user.email "john@example.com"
+
+echo "Version 1" > file.txt
+git add .
+git commit -m "Commit 1"
+
+echo "Version 2" >> file.txt
+git add .
+git commit -m "Commit 2"
+
+echo "Version 3" >> file.txt
+git add .
+git commit -m "Commit 3"
+
+git log -5
+
+git log --author="JohnDoe"
+
+git log --since="2026-06-16"
+
+git log --until="2026-06-17"
+
+git log --author="JohnDoe" --since="2026-06-16" --until="2026-06-17"
+
+git log --author="JohnDoe" --since="2026-06-16" --until="2026-06-17" --oneline

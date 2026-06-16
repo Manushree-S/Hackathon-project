@@ -1,0 +1,44 @@
+mkdir Exp1
+cd Exp1
+
+# 2. Configure your Git identity (Global)
+git config --global user.name "Manushree-S"
+git config --global user.email "manushree06@gmail.com"
+
+# 3. Check your configuration list
+git config --global --list
+
+# 4. Initialize a new local Git repository
+git init
+
+# 5. Create a new file with text in it
+echo "Hello Git" > file1.txt
+
+# 6. Verify the file content
+cat file1.txt
+
+# 7. Check the status of your repository
+git status
+
+# 8. Add the file to the staging area
+git add file1.txt
+
+# 9. Commit the changes with a message
+git commit -m "Initial commit"
+
+# 10. Link the local repository to a remote GitHub repository
+git remote add origin https://github.com/Manushree-S/Gitdemo.git
+
+git remote -v
+
+# . Rename your current branch to 'main'
+git branch -M main
+
+#  Upload (push) your code to GitHub and set the upstream tracking
+git push -u origin main
+
+# . View your commit history
+git log
+
+# . View a condensed version of your commit history
+git log --oneline

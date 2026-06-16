@@ -1,0 +1,86 @@
+# Navigate to the home directory and create a new project folder
+cd
+mkdir OriginalRepo
+cd OriginalRepo
+
+# Initialize a new Git repository
+git init
+
+# Create a file with some content
+echo "Version 1" >file.txt
+
+# Stage the file and commit it
+git add .
+git commit -m "Initial commit"
+
+# Check the commit history
+git log --oneline
+
+# Move back to the parent directory
+cd ..
+
+# Check current path
+pwd
+
+# Create a "bare" clone of the repository (often used for servers/remotes)
+git clone --bare OriginalRepo RemoteRepo.git
+
+# List directory contents
+ls
+
+# Attempted to change directory, but it failed because it didn't exist yet
+cd DeveloperRepo
+# bash: cd: DeveloperRepo: No such file or directory
+
+# Cloned a local repository into a folder named 'LocalRepo'
+git clone RemoteRepo.git LocalRepo
+
+# Cloned the same repository into a folder named 'DeveloperRepo'
+git clone RemoteRepo.git DeveloperRepo
+
+# Listed all files and directories in the current location (ls -a)
+ls
+
+# Navigate to the repository
+cd DeveloperRepo
+
+# View initial content
+cat file.txt
+
+# Append a new line to the file
+echo "Version 2" >>file.txt
+
+# View updated content
+cat file.txt
+
+# Stage the changes
+git add .
+
+# Commit the changes to the local repository
+git commit -m "Second commit"
+
+# Check the current branch
+git branch
+
+# Push changes to the remote repository (master branch)
+git push origin master
+
+# Navigate to a different local directory (LocalRepo)
+cd ../LocalRepo
+
+# Verify current working directory
+pwd
+
+# Fetch updates from the remote repository
+git fetch origin
+
+# View the log of the remote master branch
+git log origin/master --oneline
+
+git diff master origin/master
+
+git merge origin/master
+
+cat file.txt
+
+git pull origin master

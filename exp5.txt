@@ -1,0 +1,61 @@
+# Navigate to the home directory and create a new project folder
+cd
+mkdir Exp5
+cd Exp5
+
+# Initialize a new Git repository
+git init
+
+# Create a file with content and verify it
+echo "Original content" > file.txt
+cat file.txt
+
+# Stage the file and commit it to the repository
+git add .
+git commit -m "Initial commit"
+
+# View the commit history
+git log --oneline
+
+# Append new text to the file and verify the change
+echo "Temporary change" >> file.txt
+cat file.txt
+
+# Check the status of the working directory
+git status
+
+# Save the uncommitted changes to the stash stack
+git stash
+
+# 1. View initial file content
+cat file.txt
+# Output: Original content
+
+# 2. Check the git stash list
+git stash list
+# Output: stash@{0}: WIP on master: 3bddad4 Initial commit
+
+# 3. Create and switch to a new branch named 'feature'
+git checkout -b feature
+
+# 4. List branches to confirm the switch
+git branch
+
+# 5. Apply the changes from the stash to the new branch
+git stash apply
+
+# 6. View the modified file content after applying the stash
+cat file.txt
+# Output: 
+# Original content
+# Temporary change
+
+# 7. List stashes again
+git stash list
+
+
+# 10. Delete the stash entry
+git stash drop
+
+# 11. Final check of the stash list (now empty)
+git stash list

@@ -1,0 +1,38 @@
+# Navigate to home directory and create a new folder
+cd
+mkdir Exp8
+cd Exp8
+
+# Initialize the Git repository
+git init
+
+# Create the first version of the file and commit it
+echo "version 1" >file.txt
+git add .
+git commit -m "commit 1"
+
+# Check the commit log
+git log --oneline
+
+# Update the file for the second version and commit
+echo "version 2" >>file.txt
+git add .
+git commit -m "commit 2"
+
+# Update the file for the third version and commit
+echo "version 3" >>file.txt
+git add .
+git commit -m "commit 3"
+
+# Creating and committing 'version 4'
+echo "version 4" >> file.txt
+git add .
+git commit -m "commit 4"
+
+# Creating 'version 5' (the screenshot shows this being appended)
+echo "version 5" >> file.txt
+
+# Viewing the commit history (the bottom half of your screen)
+git log
+
+git log --oneline -5

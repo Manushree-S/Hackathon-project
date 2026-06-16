@@ -1,0 +1,75 @@
+# Navigate to the home directory and create a new project folder
+cd
+mkdir Exp4
+cd Exp4
+
+# Initialize a new Git repository
+git init
+
+# Print current working directory
+pwd
+
+# Create a file named app.txt with the text "Version 1"
+echo "version 1" > app.txt
+
+# View the contents of the file
+cat app.txt
+
+# Stage the file for commit
+git add .
+
+# Commit the changes to the master branch
+git commit -m "Initial commit"
+
+# View a simplified version of the commit history
+git log --oneline
+
+# Create and switch to a new branch named 'feature'
+git checkout -b feature
+
+# List all branches (shows you are now on 'feature')
+git branch
+
+# Append "Feature Added" to the existing app.txt file
+echo "Feature Added" >> app.txt
+
+# View the updated contents of the file
+cat app.txt
+
+
+# Stage the changes and commit them to the 'feature' branch
+git add .
+git commit -m "Feature commit"
+
+# View the commit history in a single line format
+git log --oneline
+
+# Switch back to the master branch
+git checkout master
+
+# Verify file content on master (the "Feature Added" line won't be there yet)
+cat app.txt
+
+# Merge the 'feature' branch into 'master' (results in a Fast-forward merge)
+git merge feature
+
+# Verify the file now contains the new feature on master
+cat app.txt
+
+# List all local branches
+git branch
+
+# Switch back to the feature branch
+git checkout feature
+
+# Attempt to rebase feature onto master (shows it's already up to date)
+git rebase master
+
+# Final check of the branches
+git branch
+
+# To view the content of the file
+cat app.txt
+
+# To rebase the current 'feature' branch onto the 'master' branch
+git rebase master
