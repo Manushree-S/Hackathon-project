@@ -1,86 +1,38 @@
-# Navigate to the home directory and create a new project folder
-cd
-mkdir OriginalRepo
-cd OriginalRepo
+mkdir GitExperiment2
+cd GitExperiment2
 
-# Initialize a new Git repository
 git init
 
-# Create a file with some content
-echo "Version 1" >file.txt
+echo Hello Git > demo.txt
 
-# Stage the file and commit it
+git status
+
 git add .
-git commit -m "Initial commit"
 
-# Check the commit history
-git log --oneline
+git commit -m "Initial Commit"
 
-# Move back to the parent directory
+git remote add origin https://github.com/yourusername/GitExperiment2.git
+
+git remote -v
+
+git branch -M main
+
+git push -u origin main
+
 cd ..
 
-# Check current path
-pwd
+git clone https://github.com/yourusername/GitExperiment2.git
 
-# Create a "bare" clone of the repository (often used for servers/remotes)
-git clone --bare OriginalRepo RemoteRepo.git
+cd GitExperiment2
 
-# List directory contents
-ls
+git remote -v
 
-# Attempted to change directory, but it failed because it didn't exist yet
-cd DeveloperRepo
-# bash: cd: DeveloperRepo: No such file or directory
+git pull origin main
 
-# Cloned a local repository into a folder named 'LocalRepo'
-git clone RemoteRepo.git LocalRepo
-
-# Cloned the same repository into a folder named 'DeveloperRepo'
-git clone RemoteRepo.git DeveloperRepo
-
-# Listed all files and directories in the current location (ls -a)
-ls
-
-# Navigate to the repository
-cd DeveloperRepo
-
-# View initial content
-cat file.txt
-
-# Append a new line to the file
-echo "Version 2" >>file.txt
-
-# View updated content
-cat file.txt
-
-# Stage the changes
-git add .
-
-# Commit the changes to the local repository
-git commit -m "Second commit"
-
-# Check the current branch
-git branch
-
-# Push changes to the remote repository (master branch)
-git push origin master
-
-# Navigate to a different local directory (LocalRepo)
-cd ../LocalRepo
-
-# Verify current working directory
-pwd
-
-# Fetch updates from the remote repository
 git fetch origin
 
-# View the log of the remote master branch
-git log origin/master --oneline
+git merge origin/main
 
-git diff master origin/master
+git log --oneline
 
-git merge origin/master
-
-cat file.txt
-
-git pull origin master
+git status
