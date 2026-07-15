@@ -1,64 +1,41 @@
-# Navigate to the home directory and create a new project folder
-cd
+
 mkdir Exp9
 cd Exp9
 
-# Initialize a new Git repository
 git init
 
-# Create a new file with text and stage it
-echo "Initial" >file.txt
+echo "Version 1" > file.txt
 git add .
+git commit -m "Commit 1"
 
-# Create the first commit
-git commit -m "Initial commit"
+git remote add origin https://github.com/Manushree-S/Exp9.git
+git branch -M main
+git push -u origin main
 
-# Check the commit history
+git checkout -b source-branch
+
+echo "Version 2" >> file.txt
+git add .
+git commit -m "Commit 2"
+
+echo "Version 3" >> file.txt
+git add .
+git commit -m "Commit 3"
+
+echo "Version 4" >> file.txt
+git add .
+git commit -m "Commit 4"
+
 git log --oneline
 
-# Create and switch to a new branch named 'bugfix'
-git checkout -b bugfix
+git checkout main
 
-# Append text to the file, stage, and commit on the bugfix branch
-echo "Fix1" >>file.txt
-git add .
-git commit -m "Bug Fix 1"
+# Replace the hashes below with your own commit IDs
+git cherry-pick <Commit2-Hash>^..<Commit4-Hash>
 
-# Append more text to the file and stage it
-echo "Fix2" >>file.txt
-git add .
-
-# Finalizing a bug fix on the 'bugfix' branch
-git commit -m "Bug Fix 2"
 git log --oneline
-# (Output shows commits: 8790b5a, a09670b, c2e5f47)
+                Or
+# Example of cherry-picking non-consecutive commits
+git cherry-pick <Commit2-Hash> <Commit4-Hash>
 
-# Verifying content on bugfix branch
-cat file.txt
-
-# Switching to master branch to apply fixes
-git checkout master
-cat file.txt  # Shows only "Initial"
-
-# Applying the first fix via cherry-pick
-git cherry-pick a09670b
-cat file.txt  # Now shows "Initial" and "fix1"
-
-# Attempting to cherry-pick a range of commits
-git cherry-pick a09670b..8790b5a
-
-# Handling a redundant or empty cherry-pick
-# The terminal suggests 'git commit --allow-empty' or skipping
-git cherry-pick --skip
-
-# Checked the status (working tree is clean)
-git status
-
-# Viewed the contents of the text file
-cat file.txt
-
-# Encountered a typo error
-git log --online
-
-# Corrected command to see commit history
-git log --oneline
+git push origin main
