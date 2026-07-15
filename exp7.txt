@@ -1,98 +1,44 @@
-# Navigate to home and create a new directory
-cd
+
 mkdir Exp7
 cd Exp7
 
-# Initialize a new Git repository
 git init
 
-# Create 'file.txt' with content "v1", stage it, and commit
-echo "v1" >file.txt
+echo "Version 1" > file.txt
 git add .
-git commit -m "commit 1"
+git commit -m "Commit 1"
 
-# Append "v2" to 'file.txt', stage it, and commit
-echo "v2" >>file.txt
+git remote add origin https://github.com/Manushree-S/Exp7.git
+git branch -M main
+git push -u origin main
+
+echo "Work in Progress" >> file.txt
+git stash
+git stash list
+git stash pop
+
 git add .
-git commit -m "commit 2"
+git commit -m "Commit 2"
 
-# View the commit history
+echo "Version 3" >> file.txt
+git add .
+git commit -m "Commit 3"
+
 git log --oneline
+git rebase -i HEAD~2
 
-# Undo the last commit while keeping changes staged (Soft Reset)
-git reset --soft HEAD~1
-
-# Check the current status of the repository
-git status
-
-# First commit attempt and reset
-git commit -m "commit 2"
-git reset HEAD~1
-
-# Checking status and staging changes
-git status
-git add .
-
-# Successful second commit
-git commit -m "commit 2"
-
-# Hard reset to the previous commit
-git reset --hard HEAD~1
-
-# Checking file content
-cat file.txt
-
-# Appending text to the file
-echo "v2" >>file.txt
-
-# Final staging and commit
-git add .
-git commit -m "commit 2"
-
-# Initial state and second commit
-$ git commit -m "commit 2"
-[master fb6d962] commit 2
- 1 file changed, 1 insertion(+)
-
-# Checking the log
-$ git log --oneline
-fb6d962 (HEAD -> master) commit 2
-b756f79 commit 1
-
-# Modifying a file and creating a third commit
-$ echo "V3" >>file.txt
-
-$ git add .
-warning: in the working copy of 'file.txt', LF will be replaced by CRLF the next time Git touches it
-
-$ git commit -m "commit 3"
-[master a3d93c9] commit 3
- 1 file changed, 1 insertion(+)
-
-# Checking the log after three commits
-$ git log --oneline
-a3d93c9 (HEAD -> master) commit 3
-fb6d962 commit 2
-b756f79 commit 1
-
-# Successfully performing a rebase
-$ git rebase -i HEAD~2
-Successfully rebased and updated refs/heads/master.
-
-# Final log check
-$ git log --oneline
-a3d93c9 (HEAD -> master) commit 3
-fb6d962 commit 2
-b756f79 commit 1
-
-# Creating Git tags
-$ git tag v1.0
-
-$ git tag -a v2.0 -m "Release version 2.0"
-
-# Viewing existing tags
+git tag v1.0
+git tag -a v2.0 -m "Release Version 2.0"
 git tag
-
-
-# Checking the details and file changes of version 2.0
 git show v2.0
+git push origin --tags
+
+echo "Temporary Change" >> file.txt
+git restore file.txt
+
+echo "Testing Revert" >> file.txt
+git add .
+git commit -m "Testing Revert"
+
+git revert HEAD
+git push origin main
